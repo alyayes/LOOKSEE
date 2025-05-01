@@ -1,0 +1,67 @@
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 0 2px px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .title-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+  
+  .card .image-placeholder img {
+    max-width: 90%;
+    max-height: 100%;
+  }
+  .image-placeholder {
+    margin: 5px 5px 5px 5px;
+  }
+  
+  .card .image-placeholder p {
+    margin: 0;
+  }
+  .card .image-placeholder h3 {
+    text-align: left;
+  }
+  .card p {
+    margin: 5px 0;
+    text-align: left;
+  }
+  .card i {
+    margin: 5px 0;
+    text-align: right;
+  }
+  
+  .tag {
+    display: inline-block;
+    padding: 10px 35px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: black;
+    text-align: right;
+  }
+  
+  .tag.happy {
+      background-color:rgb(244,196,212);
+  }
+  
+  .tag.very-happy {
+    background-color:rgb(243, 147, 182);
+  
+  }
+  
+  .tag.sad {
+    background-color:rgb(191, 218, 240);
+  }
+  
+  .tag.neutral {
+    background-color:rgb(237, 209, 138);
+  }
+  
+  .tag.very-sad {
+    background-color: rgb(114,184,237);
+  }

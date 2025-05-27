@@ -1,0 +1,79 @@
+body {
+  font-family: 'Jost', sans-serif;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background-color: #fefefe;
+  border: 10px solid #321212;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  padding: 25px;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-image {
+  width: 25%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 10px;
+  text-align: center;
+}
+
+.product-name {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.product-marketplace {
+  font-size: 14px;
+  color: #888;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.pagination a {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 0 5px;
+  border: 1px solid #f57c9c;
+  color: #f57c9c;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.pagination a.active,
+.pagination a:hover {
+  background-color: #f57c9c;
+  color: #fff;
+}

@@ -1,0 +1,594 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Jost', sans-serif;
+    list-style:none;
+    text-decoration: none;
+}
+
+header {
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+    background-color: white;
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    z-index: 50;
+}
+.logo {
+    margin-left: 5%;
+}
+nav {
+    flex: 1;
+    text-align: right;
+}
+nav ul {
+    display: inline-block;
+    list-style-type: none;
+}
+nav ul li {
+    display: inline-block;
+    margin-right: 25px;
+}
+nav ul li a {
+    color: black;
+}
+nav ul li a:hover, nav ul li a.active {
+    color: rgb(250, 156, 211);
+} 
+
+.nav-icon{
+    display: flex;
+    align-items: center;
+}
+.nav-icon i{
+    margin-right: 20px;
+    color: #2c2c2c;
+    font-size: 25px;
+    font-weight:400;
+    transition: all .42s ease;
+}
+.nav-icon i:hover{
+    transform: scale(1.1);
+    color: rgb(250, 156, 211);
+}
+.dropdown {
+    position: relative;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-content .submenu-title {
+    color: black;
+    font-size: 15px;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    text-align: center;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px gray (0, 0, 0, 0.2);
+    z-index: 100;
+}
+.dropdown-profile {
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px gray(0, 0, 0, 0.2);
+}
+.dropdown-content .dropdown-profile-submenu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; 
+}
+.dropdown-content .submenu-title {
+    color: black;
+    font-size: 15px;
+}
+.dropdown-product-submenu {
+    color: black;
+    font-size: 15px;
+}
+.dropdown-content a {
+    color: black;
+    padding: 5px 0;
+    transition: 0.3s;
+}
+.dropdown-profile a {
+    color: black;
+    padding: 5px;
+    margin-between-text: 0;
+    transition: 0.3s;
+    font-size: 15px;
+}
+.dropdown-content a:hover {
+    color: rgb(250, 156, 211);
+}
+.dropdown-profile a:hover {
+    color: rgb(250, 156, 211);
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown:hover .dropdown-profile {
+    display: block;
+}
+
+/*body*/
+section{
+    padding: 5% 10%;
+}
+
+
+/* slide */
+.main-home{
+    width: 100%;
+    height: 100vh;
+    background-image: url(banner.jpg);
+    background-position: center;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items:center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
+}
+
+.main-text {
+
+}
+
+
+.main-text h5{
+    color: rgb(250, 156, 211);
+    font-size: 30px;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+.main-text h1{
+    color: black;
+    font-size: 65px;
+    text-transform: capitalize;
+    line-height: 1.1;
+    font-weight: 600;
+    margin: 6px 0 10px;
+}
+.main-text p{
+    color: #333c56;
+    font-size:20px;
+    font-style: italic;
+    margin-bottom:20px;
+}
+.main-btn{
+    display: inline-block;
+    color: #111;
+    font-size:16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: 2px solid □#111;
+    padding: 12px 25px;
+    transition: all .42s ease;
+}
+.main-btn:hover{
+    background-color: rgb(250, 156, 211);
+    color:white;
+    border-radius: 50px;
+}
+.main-btn i{
+    vertical-align: middle;
+}
+.down-arrow{
+    position:absolute;
+    top:85%;
+    right: 11%;
+}
+.down i{
+    font-size: 30px;
+    color: rgb(250, 156, 211);
+    border: 2px solid rgb(250, 156, 211);
+    border-radius: 50px;
+    padding: 12px 12px;
+}
+.down i:hover{
+    background-color: rgb(250, 156, 211);
+    color: #fff;
+    transition: all .42s ease;
+}
+
+
+/* Why Choose Us */
+.main-about {
+    width: 100%;
+    height: 100vh;
+    background-image: url(bann2.png);
+    background-position: center;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items:center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.main-about .main-about-us h2 {
+    margin-left: 40%;
+    margin-bottom: 3px;
+}
+.main-about .main-about-us p {
+    margin-left: 40%;
+}
+.main-about .main-about-us d {
+    color: rgb(250, 156, 211);
+    font-size: 19px;
+    
+}
+.main-about .main-about-us a {
+    color: rgb(250, 156, 211);
+}
+.main-about .main-about-us .about-icon p {
+    margin-left: 40%;
+}
+.main-about .main-about-us .about-icon .i t {
+    margin-left: 40%;
+    font-size: 20px;
+}
+
+.main-about .main-about-us .about-icon i {
+    margin-left: 40%;
+    color: rgb(250, 156, 211);
+    font-size: 20px;
+
+}
+.main-about .main-about-us .about-icon h5 {
+    color: rgb(250, 156, 211);
+    display:  flex;
+}
+
+/* ABOUT ICON */
+.about-icon {
+    background-color: #FFFAF0;
+}
+.about-icon details {
+
+}
+.about-icon h2 {
+    margin-left: 15%;
+}
+.about-icon p {
+    margin-left: 8.3%;
+    margin-right: 7%;
+}
+.about-icon i {
+    margin-left: 7%;
+    margin-right: 7%;
+}
+.about-icon d {
+    color: rgb(250, 156, 211);
+}
+.about-us .choose{
+
+}
+.about-icon details {
+    background-color:rgb(255, 255, 255); /* Atur sesuai kebutuhan */
+    border-radius: 18px;
+    padding: 10px;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    border: 1px solid #ddd;
+}
+
+.about-icon summary {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: rgb(250, 156, 211);
+    list-style: none;
+}
+
+.about-icon summary i {
+    margin-right: 10px; /* Jarak antara ikon dan teks */
+    font-size: 30px;
+    transition: transform 0.3s ease;
+    
+}
+
+
+
+.about-icon p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333c56;
+    display: block; /* Agar konten terlihat saat details dibuka */
+    font-style: italic;
+    padding-left: 3%; /* Memberikan spasi untuk teks */
+}
+
+/*3 Brand/Toko */
+.brand{
+    top:85%;
+    right: 11%;
+    font-size: 20px;
+    color: black;
+    display: flex;
+}
+.brand img{
+    width: 130px;
+    height: 130px;
+    border-radius: 50px;
+    padding: 12px 12px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+.brand a {
+    margin-left: 15%;
+}
+.brand img:hover{
+    transform: translateY(-5px);
+}
+
+/* Team */
+.team {
+    background-color: rgb(255, 255, 255);
+}
+
+.team .card-team {
+    margin-right: 10%;
+    display: flex;
+    margin-bottom: -2%;
+}
+
+.developer {
+    background: #fff;
+    padding: 20px;
+    text-align: center;
+    flex: 0 0 200px;
+    overflow: hidden;
+    margin-left: 15%;
+}
+.developer img {
+    border-radius: 5px;
+    width: 110%;
+    height: auto;
+}
+
+.designer {
+    background: #fff;
+    padding: 20px;
+    text-align: center;
+    flex: 0 0 200px;
+    overflow: hidden;
+    margin-left: 18%;
+}
+.designer img {
+    border-radius: 5px;
+    width: 110%;
+    height: auto;
+}
+
+
+
+/* Contact Us */
+/* Container untuk kontak */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+/* Setiap item kontak */
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Gaya untuk ikon */
+.icon {
+    width: 30px;
+    height: 30px;
+    background-color: #d3d3d3; /* Warna abu-abu */
+    border-radius: 50%;
+}
+
+/* Gaya teks */
+.contact-item p {
+    margin: 0;
+    font-size: 16px;
+    color: #000;
+    
+}
+
+/* Link gaya default */
+.contact-item a {
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+}
+.contact-item i {
+    color: rgb(250, 156, 211);
+    font-size: 25px;
+}
+
+/* Hover untuk link */
+.contact-item a:hover {
+    text-decoration: none;
+    color:  rgb(250, 156, 211);
+}
+   
+/* Grid Layout */
+.center-class {
+    background-color: black;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+  /* Product Card */
+.product-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+    text-align: center;
+}
+  
+.product-card:hover {
+    transform: translateY(-5px);
+}
+  
+/* Product Image */
+.product-image img {
+    width: 100%;
+    height: auto;
+}
+  
+  /* Product Details */
+.product-details {
+    padding: 15px;
+}
+.product-details h3 {
+    font-size: 1.2rem;
+    color: black;
+}
+.product-details h4 {
+    font-size: 1.2rem;
+    color: black;
+}
+.product-details p {
+    font-size: 1rem;
+    color: black;
+}
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+/* Footer */
+.row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.garis {
+    background-color:rgb(163, 41, 94);
+    padding: 3px;
+}
+.footer {
+    background: #fcd5d5;
+    color: #555;
+    font-size: 14px;
+    padding: 5px 0 20px;
+}
+.footer p{
+    color: #555;
+}
+.footer h3{
+    color: #555;
+    margin-bottom: 20px;
+}
+.footer-col-1, .footer-col-2, .footer-col-3, .footer-col-4 {
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+.footer-col-1{
+    flex-basis: 30%;
+    margin-left: 4%;
+}
+.footer-col-2{
+    flex: 1;
+    text-align: center;
+}
+.footer-col-2 img{
+    width: 180px;
+    margin-bottom: 0px;
+}
+.footer-col-3, .footer-col-4{
+    flex-basis: 12%;
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+}
+ul li a {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+ul li a:hover {
+    color: #555;
+}
+.footer hr{
+    border: none;
+    background: #555;
+    height: 1px;
+    margin: 20px 0;
+}
+.Copyright{
+    text-align: center;
+}
+
+.menu-icon {
+    width: 28px;
+    margin-left: 20px;
+    display: none;
+}
+
+/----Media Query for Menu----/
+@media only screen and (max-width: 800px) {   
+    
+    nav ul{
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background: #333;
+        width: 100%;
+        overflow: hidden;
+        transition: max-height 0.5;
+    }
+    nav ul li {
+        display: block;
+        margin-right: 50px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    nav ul li a{
+        color: #fff;
+    }
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+    }
+}

@@ -1,5 +1,4 @@
-<?php
-include '../views/header.php'; ?>
+
 		<!--start page wrapper -->
 		<div class="page-wrapper">
 			<div class="page-content">
@@ -174,9 +173,7 @@ include '../views/header.php'; ?>
 		<!--Start Back To Top Button-->
 		  <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
 		<!--End Back To Top Button-->
-		<footer class="page-footer">
-			<p class="mb-0">Copyright &copy 2024 LOOKSEE. All Right Reserved.</p>
-		</footer>
+		
 	</div>
 	<!--end wrapper-->
 
@@ -202,4 +199,3 @@ include '../views/header.php'; ?>
 </body>
 </html>
 
-<?php include '../views/header.php'; ?>

@@ -30,7 +30,7 @@
         <h1>Livvie Twalrose</h1>
         <p>@ivyrosy | she/her</p>
         <p>You have no bio yet.</p>
-        <button class="edit-profile"><a href="LOOKSEE/profile.html">Edit Profile</button></a>
+        <button class="edit-profile"><a href="settingProfile.php">Edit Profile</button></a>
     </div>
 
     <div class="tabs">

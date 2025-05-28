@@ -18,7 +18,6 @@ $bio        = $_POST['bio'] ?? '';
 $birthday   = $_POST['birthday'] ?? '';
 $country    = $_POST['country'] ?? '';
 $phone      = $_POST['phone'] ?? '';
-$website    = $_POST['website'] ?? '';
 $twitter    = $_POST['twitter'] ?? '';
 $facebook   = $_POST['facebook'] ?? '';
 $instagram  = $_POST['instagram'] ?? '';
@@ -78,7 +77,6 @@ if ($profile_picture) {
                 birthday = ?, 
                 country = ?, 
                 phone = ?, 
-                website = ?, 
                 twitter = ?, 
                 facebook = ?, 
                 instagram = ?,
@@ -86,7 +84,7 @@ if ($profile_picture) {
               WHERE user_id = ?";
 
     $stmt = $koneksi->prepare($query);
-    $stmt->bind_param("ssssssssssssi", $username, $name, $email, $bio, $birthday, $country, $phone, $website, $twitter, $facebook, $instagram, $profile_picture, $user_id);
+    $stmt->bind_param("sssssssssssi", $username, $name, $email, $bio, $birthday, $country, $phone, $twitter, $facebook, $instagram, $profile_picture, $user_id);
 } else {
     $query = "UPDATE user SET 
                 username = ?, 
@@ -96,14 +94,13 @@ if ($profile_picture) {
                 birthday = ?, 
                 country = ?, 
                 phone = ?, 
-                website = ?, 
                 twitter = ?, 
                 facebook = ?, 
                 instagram = ?
               WHERE user_id = ?";
 
     $stmt = $koneksi->prepare($query);
-    $stmt->bind_param("sssssssssssi", $username, $name, $email, $bio, $birthday, $country, $phone, $website, $twitter, $facebook, $instagram, $user_id);
+    $stmt->bind_param("ssssssssssi", $username, $name, $email, $bio, $birthday, $country, $phone, $twitter, $facebook, $instagram, $user_id);
 }
 
 // Eksekusi query

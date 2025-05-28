@@ -1,3 +1,34 @@
+<?php
+session_start();
+require_once '../koneksi.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+
+// Ambil data user dari database
+$query = "SELECT * FROM user WHERE user_id = ?";
+$stmt = $koneksi->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows === 1) {
+    $user = $result->fetch_assoc(); // <== ini yang membuat $user tersedia
+} else {
+    $_SESSION['error'] = "Data pengguna tidak ditemukan.";
+    header("Location: login.php");
+    exit();
+}
+
+$stmt->close();
+
+$profilePicture = !empty($user['profile_picture']) ? '../uploads/' . htmlspecialchars($user['profile_picture']) : '../assets/images/default-profile.png';
+?>
+?>
 
 <!--Website: wwww.codingdung.com-->
 <!DOCTYPE html>
@@ -92,7 +123,7 @@
                             <!-- GENERAL -->
                             <div class="tab-pane fade active show" id="account-general">
                                 <div class="card-body media align-items-center">
-                                    <img src="../assets/images/default-profile.png" alt="Profile Picture" class="d-block ui-w-80">
+                                    <img src="<?= $profilePicture ?>" alt="Profile Picture" class="d-block ui-w-80">
                                     <div class="media-body ml-4">
                                         <label class="btn btn-outline-primary">
                                             Upload new photo
@@ -158,17 +189,9 @@
                                             <option <?= $user['country'] == 'France' ? 'selected' : '' ?>>France</option>
                                         </select>
                                     </div>
-                                </div>
-                                <hr class="border-light m-0">
-                                <div class="card-body pb-2">
-                                    <h6 class="mb-4">Contacts</h6>
                                     <div class="form-group">
                                         <label class="form-label">Phone</label>
                                         <input type="text" name="phone" class="form-control" value="<?= htmlspecialchars($user['phone']) ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Website</label>
-                                        <input type="text" name="website" class="form-control" value="<?= htmlspecialchars($user['website']) ?>">
                                     </div>
                                 </div>
                             </div>

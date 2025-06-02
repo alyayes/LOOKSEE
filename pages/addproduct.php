@@ -165,7 +165,7 @@ mysqli_close($koneksi);
                             <option value="">Pilih Mood</option>
                             <option value="Very Happy">Very Happy</option>
                             <option value="Happy">Happy</option>
-                            <option value="Netral">Netral</option>
+                            <option value="Netral">Neutral</option>
                             <option value="Sad">Sad</option>
                             <option value="Very Sad">Very Sad</option>
                         </select>

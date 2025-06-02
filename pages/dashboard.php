@@ -22,7 +22,7 @@
 					   <div class="card-body">
 						   <div class="d-flex align-items-center">
 							   <div>
-								   <h3 class="my-1 text-danger">246</h3>
+								   <h3 class="my-1 text-danger">36</h3>
 								   <p class="mb-0 text-secondary">Products</p>
 
 							   </div>
@@ -37,7 +37,7 @@
 					   <div class="card-body">
 						   <div class="d-flex align-items-center">
 							   <div>
-								   <h3 class="my-1 text-success">879</h3>
+								   <h3 class="my-1 text-success">543</h3>
 								   <p class="mb-0 text-secondary">Searches</p>
 								   
 							   </div>

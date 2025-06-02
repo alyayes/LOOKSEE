@@ -1,40 +1,43 @@
 <?php
 include(__DIR__ . '/../koneksi.php');
 
-// Proses tambah artikel
+// Proses tambah journal
 if (isset($_POST['btnSubmit'])) {
-    $title = $_POST['title'];
-    $content = $_POST['content'];
-    $created_at = date('Y-m-d'); // format tanggal hari ini
+  $title = $_POST['title'];
+  $content = $_POST['content'];
 
-    // Upload gambar
-    $target_dir = "../uploads/";
-    $nama_file = time() . "_" . basename($_FILES["image"]["name"]);
-    $target_file = $target_dir . $nama_file;
+  // Upload gambar
+  $target_dir = "../uploads/";
+  $nama_file = time() . "_" . basename($_FILES["image"]["name"]);
+  $target_file = $target_dir . $nama_file;
 
-    if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-        $image = $nama_file;
-    } else {
-        echo "Upload gambar gagal.";
-        exit;
-    }
+  if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+    $image = $nama_file;
+  } else {
+    echo "Image upload failed.";
+    exit;
+  }
 
-    // Simpan ke database
-    $stmt = $koneksi->prepare("INSERT INTO artikel (title, content, image, created_at) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $title, $content, $image, $created_at);
+  // Simpan ke database
+  $stmt = $koneksi->prepare("INSERT INTO stylejournal (title, content, image) VALUES (?, ?, ?)");
+  $stmt->bind_param("sss", $title, $content, $image);
 
-    if ($stmt->execute()) {
-        echo "<script>alert('Artikel berhasil ditambahkan!'); window.location.href='stylejournal.php';</script>";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
+  if ($stmt->execute()) {
+    echo "<script>alert('Journal added successfully!'); window.location.href='stylejournal.php';</script>";
+  } else {
+    echo "Error: " . $stmt->error;
+  }
 
-    $stmt->close();
+  $stmt->close();
 }
+
+// Ambil semua data journal
+$sql = "SELECT * FROM stylejournal";
+$result = $koneksi->query($sql);
 ?>
-  
-      
-      <style>
+
+
+<style>
   * {
     box-sizing: border-box;
   }
@@ -56,7 +59,8 @@ if (isset($_POST['btnSubmit'])) {
     width: 100%;
     border: 1px solid #ddd;
     font-size: 18px;
-    margin-bottom: 50px; /* Berikan jarak bawah */
+    margin-bottom: 50px;
+    /* Berikan jarak bawah */
   }
 
   #myTable th,
@@ -74,69 +78,54 @@ if (isset($_POST['btnSubmit'])) {
   #myTable tr:hover {
     background-color: rgb(255, 234, 247);
   }
+
+  .btn-action {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-right: 5px;
+  }
 </style>
 
-      <div class="baru">
-        <section>
-          <button type="button" class="btn btn-primary" onclick="window.location.href='index.php?page=addstylejournal';">
-            <i class='bx bx-plus'></i> Add Article
-          </button>
-        </section>
+<div class="propic">
+  <section>
+    <button type="button" class="btn btn-primary" onclick="window.location.href='index.php?page=addstylejournal';">
+      <i class='bx bx-plus'></i> Add Journal
+    </button>
+  </section>
 
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for article..." title="Type in a name" />
-        <table id="myTable">
-          <tr class="header">
-            <th style="width:14%;">Title</th>
-            <th style="width:25%;">Date</th>
-            <th style="width:25%;">Status</th>
-            <th style="width:20%;">Action</th>
-          </tr>
-          
-          
-        </table>
-      </div>
-      
-      <script>
-        function myFunction() {
-          var input, filter, table, tr, td, i, j, txtValue;
-          input = document.getElementById("myInput");
-          filter = input.value.toUpperCase();
-          table = document.getElementById("myTable");
-          tr = table.getElementsByTagName("tr");
-      
-          for (i = 1; i < tr.length; i++) {
-            tr[i].style.display = "none"; // Hide all rows by default
-            td = tr[i].getElementsByTagName("td");
-            for (j = 0; j < td.length; j++) {
-              if (td[j]) {
-                txtValue = td[j].textContent || td[j].innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                  tr[i].style.display = ""; // Show row if match found
-                  break;
-                }
-              }
-            }
-          }
-        }
-      </script>
-      
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for journal..." title="Type in a name" />
+  <table id="myTable">
+    <tr class="header">
+      <th style="width:8%;">Image</th>
+      <th style="width:10%;">Title</th>
+      <th style="width:20%;">Content</th>
+      <th style="width:10%;">Action</th>
+    </tr>
 
-<!-- Bootstrap JS -->
-<script src="assets/js/bootstrap.bundle.min.js"></script>
-<!--plugins-->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/simplebar.min.js"></script>
-<script src="assets/js/metisMenu.min.js"></script>
-<script src="assets/js/perfect-scrollbar.js"></script>
-<script src="assets/js/jquery-jvectormap-2.0.2.min.js"></script>
-  <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
-<script src="assets/js/chart.js"></script>
-<script src="assets/js/index.js"></script>
-<!--app JS-->
-<script src="assets/js/app.js"></script>
-<script>
-  new PerfectScrollbar(".app-container")
-</script>
 
-</body>
-</html>
+    <tbody>
+      <?php while ($row = $result->fetch_assoc()): ?>
+        <tr>
+          <td>
+            <img src="uploads/<?= $row['image'] ?>" width="60" height="60" alt="Gambar Journal">
+          </td>
+          <td><?= $row['title'] ?></td>
+          <td><?= $row['content'] ?></td>
+          <td>
+            <a href="index.php?page=editstylejournal&id=<?= $row['id_journal']; ?>" class="btn btn-success btn-action"
+              title="Edit">
+              <i class='bx bx-edit'></i>
+            </a>
+            <a href="pages/deletestylejournal.php?id=<?= $row['id_journal'] ?>" class="btn btn-danger btn-action" title="Hapus"
+              onclick="return confirm('Are you sure you want to delete this journal?')">
+              <i class='bx bx-trash'></i>
+            </a>
+          </td>
+        </tr>
+      <?php endwhile; ?>
+    </tbody>

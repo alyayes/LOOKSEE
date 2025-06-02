@@ -109,6 +109,18 @@ $result = $koneksi->query($sql);
   #myTable tr:hover {
     background-color: rgb(255, 234, 247);
   }
+
+  .btn-action {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-right: 5px;
+  }
+
 </style>
 
 <div class="propic">
@@ -122,7 +134,7 @@ $result = $koneksi->query($sql);
   <table id="myTable">
     <tr class="header">
       <th style="width:12%;">Product</th>
-      <th style="width:11%;">Product Name</th>
+      <th style="width:10%;">Product Name</th>
       <th style="width:13%;">Description</th>
       <th style="width:11%;">Price</th>
       <th style="width:8%;">Category</th>
@@ -144,11 +156,18 @@ $result = $koneksi->query($sql);
           <td><?= $row['mood'] ?></td>
           <td><?= htmlspecialchars($row['platform']) ?></td>
           <td><a href="<?= $row['link_produk'] ?>" target="_blank">Lihat Produk</a></td>
-          <td>
-            <a href="index.php?page=editproduct&id=<?= $row['id_produk']; ?>" class="btn btn-success">Edit</a>
-            <a href="pages/deleteproduct.php?id=<?= $row['id_produk'] ?>" class="btn btn-danger"
-              onclick="return confirm('Yakin hapus produk ini?')">Hapus</a>
+           <td>
+            <a href="index.php?page=editproduct&id=<?= $row['id_produk']; ?>" class="btn btn-success btn-action"
+              title="Edit">
+              <i class='bx bx-edit'></i>
+            </a>
+            <a href="pages/deleteproduct.php?id=<?= $row['id_produk'] ?>" class="btn btn-danger btn-action" title="Hapus"
+              onclick="return confirm('Yakin hapus produk ini?')">
+              <i class='bx bx-trash'></i>
+            </a>
           </td>
         </tr>
       <?php endwhile; ?>
     </tbody>
+
+    

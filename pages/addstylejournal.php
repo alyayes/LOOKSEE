@@ -1,6 +1,45 @@
 <?php
 include(__DIR__ . '/../koneksi.php');
 
+$errors = [];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $title = trim($_POST['title']);
+    $content = trim($_POST['content']);
+    $imageName = null;
+
+    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        $uploadDir = __DIR__ . '/../uploads/';
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
+
+        $imageName = basename($_FILES['image']['name']);
+        $targetFile = $uploadDir . $imageName;
+
+        if (!move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
+            $errors[] = "Gagal mengunggah gambar.";
+        }
+    }
+
+    if (empty($title) || empty($content)) {
+        $errors[] = "Judul dan konten tidak boleh kosong.";
+    }
+
+    if (empty($errors)) {
+        $stmt = $koneksi->prepare("INSERT INTO stylejournal (title, content, image) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $title, $content, $imageName);
+
+        if ($stmt->execute()) {
+            echo "<script>window.location.href='index.php?page=stylejournal';</script>";
+            exit;
+        } else {
+            $errors[] = "Gagal menyimpan data ke database.";
+        }
+
+        $stmt->close();
+    }
+}
 ?>
 
   <style>
@@ -8,10 +47,12 @@ include(__DIR__ . '/../koneksi.php');
       background-color: #f8f9fa;
     }
     .form-container {
-      max-width: 800px;
+      max-width: 1050px;
       margin-right: 20%;
       margin: 40px auto;
-      background: #ffffff;
+      margin-top: 7%;
+      margin-left: 20%;
+      background: rgb(255, 244, 252);
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -21,7 +62,6 @@ include(__DIR__ . '/../koneksi.php');
 <body>
 
   <div class="form-container">
-    <h2 class="mb-4 text-center">Form Artikel - Style Journal</h2>
     <form method="POST" enctype="multipart/form-data">
 
       <!-- Judul Artikel -->
@@ -42,22 +82,6 @@ include(__DIR__ . '/../koneksi.php');
         <input class="form-control" type="file" id="image" name="image" accept="image/*">
       </div>
 
-      <!-- Status Artikel -->
-      <div class="mb-3">
-        <label for="status" class="form-label">Status</label>
-        <select class="form-select" id="status" name="status" required>
-          <option value="draft">Draft</option>
-          <option value="published">Published</option>
-        </select>
-      </div>
-
-      <!-- Tanggal Dibuat -->
-      <div class="mb-3">
-        <label for="created_at" class="form-label">Date</label>
-        <input type="date" class="form-control" id="created_at" name="created_at" value="<?= date('Y-m-d') ?>" required>
-      </div>
-
-      <!-- Tombol -->
       <div class="d-flex justify-content-end">
         <button type="reset" class="btn btn-secondary me-2">Reset</button>
         <button type="submit" class="btn btn-primary">Save</button>
@@ -65,8 +89,4 @@ include(__DIR__ . '/../koneksi.php');
 
     </form>
   </div>
-
-  <!-- Bootstrap JS (Opsional) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 

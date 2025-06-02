@@ -87,70 +87,27 @@ if (isset($_POST['btnSubmit'])) {
 ?>
 
 <style>
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 40px 0;
-        background-color: rgb(255, 216, 245);
-    }
+  body {
+    background-color: #f8f9fa;
+  }
 
-    .card {
-        width: 1200px;
-        background-color: rgb(255, 231, 249);
-        border-radius: 10px;
-        padding: 30px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    }
+  .form-container {
+    max-width: 1050px;
+    margin: 40px auto;
+    margin-top: 7%;
+    margin-left: 20%;
+    margin-right: 20%;
+    background: rgb(255, 244, 252);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
 
-    .card h2 {
-        text-align: center;
-        margin-bottom: 25px;
-    }
-
-    .card table {
-        width: 100%;
-    }
-
-    .card td {
-        padding: 10px 0;
-    }
-
-    .card input[type="text"],
-    .card input[type="number"],
-    .card input[type="file"],
-    .card textarea {
-        width: 100%;
-        padding: 8px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-    }
-
-    .card input[type="submit"],
-    .card input[type="reset"] {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        margin-top: 15px;
-        cursor: pointer;
-    }
-
-    .card input[type="submit"] {
-        background-color: #28a745;
-        color: white;
-    }
-
-    .card input[type="reset"] {
-        background-color: #dc3545;
-        color: white;
-        margin-left: 10px;
-    }
-
-    .card img {
-        margin-top: 10px;
-        border-radius: 5px;
-    }
-</style>
+  .preview-img {
+    max-width: 200px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+  }
 
 <div class="container">
     <div class="card">
@@ -189,7 +146,7 @@ if (isset($_POST['btnSubmit'])) {
                             <option value="Very Happy" <?= $produk['mood'] == 'Very Happy' ? 'selected' : '' ?>>Very Happy
                             </option>
                             <option value="Happy" <?= $produk['mood'] == 'Happy' ? 'selected' : '' ?>>Happy</option>
-                            <option value="Netral" <?= $produk['mood'] == 'Netral' ? 'selected' : '' ?>>Netral</option>
+                            <option value="Neutral" <?= $produk['mood'] == 'Neutral' ? 'selected' : '' ?>>Neutral</option>
                             <option value="Sad" <?= $produk['mood'] == 'Sad' ? 'selected' : '' ?>>Sad</option>
                             <option value="Very Sad" <?= $produk['mood'] == 'Very Sad' ? 'selected' : '' ?>>Very Sad
                             </option>
